@@ -6,18 +6,6 @@ This project explores **AI-driven marketing attribution** to measure the contrib
 The goal is to provide insights that help marketers **allocate budgets efficiently** and optimize campaigns based on channel performance.
 
 ---
-
-## Dataset
-- **Source:** Kaggle – [Multi-Touch Attribution Dataset](https://www.kaggle.com/datasets/vivekparasharr/multi-touch-attribution)
-- **Rows:** 10,000+ user interactions  
-- **Columns:**
-  - `User ID` – unique identifier for each user  
-  - `Timestamp` – interaction timestamp  
-  - `Channel` – marketing channel  
-  - `Campaign` – campaign name  
-  - `Conversion` – target variable (Yes/No)  
-
----
 ## Dataset
 - **Source:** Kaggle – [Multi-Touch Attribution Dataset](https://www.kaggle.com/datasets/vivekparasharr/multi-touch-attribution)
 - **Rows:** 10,000+ user interactions  
