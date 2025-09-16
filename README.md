@@ -1,46 +1,66 @@
-# AI-Enhanced Marketing Attribution Analysis
-Using AI-driven and traditional attribution models to optimize multi-channel marketing spend.
+# AI Marketing Attribution Project
 
-## Problem Statement
-Marketing teams often run campaigns across multiple channels, including Paid Search, Social, Email, and Display. The challenge is understanding how each channel contributes to conversions so budgets can be allocated efficiently. This project compares traditional attribution models (Last-Touch, Linear) with AI-driven methods (Shapley value / ML-based attribution) to provide actionable insights for optimizing marketing spend.
+## Project Overview
+This project explores **AI-driven marketing attribution** to measure the contribution of various marketing channels to conversions. Using a multi-touch dataset, I implemented both **rule-based attribution models** (first-touch, last-touch, linear) and a **machine learning-based approach** (logistic regression) to evaluate channel effectiveness.
 
-### Key Questions
-- Which marketing channels drive the most conversions?  
-- How do AI-driven attribution models differ from traditional models in credit assignment?  
-- How should the marketing budget be reallocated based on AI insights?
+The goal is to provide insights that help marketers **allocate budgets efficiently** and optimize campaigns based on channel performance.
 
-## Methods / Approach
+---
 
-### Traditional Attribution Models
-1. **Last-Touch Attribution** – Assigns full credit to the final channel before conversion.  
-2. **First-Touch Attribution** – Assigns full credit to the first channel in the user journey.  
-3. **Linear Attribution** – Distributes credit equally across all channels in the conversion path.
+## Dataset
+- **Source:** Kaggle – [Multi-Touch Attribution Dataset](https://www.kaggle.com/datasets/vivekparasharr/multi-touch-attribution)
+- **Rows:** 10,000+ user interactions  
+- **Columns:**
+  - `User ID` – unique identifier for each user  
+  - `Timestamp` – interaction timestamp  
+  - `Channel` – marketing channel  
+  - `Campaign` – campaign name  
+  - `Conversion` – target variable (Yes/No)  
 
-### AI-Driven Attribution
-1. **Shapley Value / ML-Based Attribution** – Uses machine learning models (e.g., XGBoost, Logistic Regression) to predict conversion probabilities. The Shapley value assigns credit to each channel based on its marginal contribution.  
-2. **Optional: Time-Decay / Advanced Models** – Channels closer to the conversion receive higher credit than early touchpoints.
+---
+## Dataset
+- **Source:** Kaggle – [Multi-Touch Attribution Dataset](https://www.kaggle.com/datasets/vivekparasharr/multi-touch-attribution)
+- **Rows:** 10,000+ user interactions  
+- **Columns:**
+  - `User ID` – unique identifier for each user  
+  - `Timestamp` – interaction timestamp  
+  - `Channel` – marketing channel  
+  - `Campaign` – campaign name  
+  - `Conversion` – target variable (Yes/No)  
 
-### Analysis Steps
-- Load and clean the dataset (remove duplicates, handle missing values).  
-- Explore data: total conversions, spend per channel, and conversion rates.  
-- Apply attribution models to assign conversion credit per channel.  
-- Compare results across models to identify undervalued or overvalued channels.  
-- Generate actionable recommendations for budget allocation based on AI insights.
+---
+## Methods
 
-## Results / Visualizations
-- **Last-Touch Attribution:** Search = XX%, Email = XX%, Display = XX%, Social = XX%  
-- **Linear Attribution:** Search = XX%, Email = XX%, Display = XX%, Social = XX%  
-- **AI Attribution (Shapley Values):** Search = XX%, Email = XX%, Display = XX%, Social = XX%
+### 1. Data Preparation
+- Converted `Conversion` to numeric (1 = Yes, 0 = No)  
+- Aggregated channel sequences per user in chronological order  
+- Extracted **first-touch** and **last-touch** channels  
 
-![Attribution Comparison Chart](visuals/attribution_chart.png)
+### 2. Attribution Models
+**Rule-Based:**
+- **First-Touch:** Full credit to first channel in user journey  
+- **Last-Touch:** Full credit to last channel  
+- **Linear:** Equal credit to all channels in the sequence  
 
-## Insights & Recommendations
-- Display advertising is undervalued in traditional models (AI shows it contributes XX% of conversions).  
-- Reallocate 10% of Paid Search budget to Display to improve ROAS.  
-- AI-driven attribution provides a more holistic view of the customer journey compared to Last-Touch.
+**Machine Learning-Based:**
+- Logistic Regression with **one-hot encoded channels**  
+- Coefficients normalized to show relative contribution  
 
-## Next Steps / Future Work
-- Incorporate time-decay attribution for additional insight.  
-- Integrate real-time ad spend data for dynamic budget allocation.  
-- Test AI models on multi-touch sequences over multiple campaigns.
+---
+
+## Key Findings
+
+### Conversion Rates by Touch
+- First-touch channels with highest conversion: `Email`, `Social Media`  
+- Last-touch channels driving conversions: `Direct Traffic`, `Search Ads`  
+
+### Attribution Comparison
+- Linear attribution spreads credit across all channels  
+- ML-based model highlights **most influential channels** based on actual conversion data  
+
+*Visualizations are saved in the `/visuals` folder.*
+
+---
+
+## Visualizations
 
